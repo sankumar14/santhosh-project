@@ -8,9 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Welcome to RiverFalls Books</title>
-   
+    <title>Welcome to River Falls Books </title>
 
+    
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
     <!-- Bootstrap theme -->
@@ -22,23 +22,44 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">The Nest Book</a>
+    </div>
+     <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
 
     <div class="container theme-showcase" role="main">
 
       <div class="jumbotron">
-        <h1>RiverFalls Books</h1>
-        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}">Sign the RiverFalls Books</a>
-        
-        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}"> <button type="button" class="btn btn-primary">Sign the RiverFalls Books</button></a>
+        <img src="https://cutt.ly/YePLM7o"> 
+        <h1>The Nest Book</h1> <br>
+        <h4> The Nest Book  is first of its kind log book available electronically and helps small businesses to gather feedbacks from the customers and implement any fixes nessesary in order to maintain customer satisfaction. This place is also good to cheerish memories and share contacts or store them in secure location. <br> <br>
+
+        <i> About the city River Falls, WI, USA: <i> <br> 
+          <a>The city's first settlers were Joel Foster and his indentured servant, Dick, in 1848. The village was started as Kinnickinnic in 1854 by brothers Nathaniel N. and Oliver S. Powell, who were from St. Lawrence County, New York. At the time, the town and village were also known as Greenwood, but this was changed, as another Greenwood, Wisconsin already existed. The present name comes from the Kinnickinnic River rapids.<a> </h4>
+
+        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}"> <button type="button" class="btn btn-primary">Sign the The Nest Book</button></a>
       </div>
+
       
+      {% for r in result %}
       <div class="page-header">
-        <h1>Name</h1>
+        <h1>{{ r.name }}</h1>
       </div>
-      
       <div class="well">
-        <p>The University of Wisconsin–River Falls (also known as UW–River Falls or UWRF) is a public liberal arts university located in River Falls, Wisconsin. ... In 2013-2014 UWRF had an enrollment of 6,061 students in more than 40 undergraduate and graduate programs.</p>
+        <p>{{ r.comment }}</p>
       </div>
+      {% endfor %}
+
+      
 
     </div> <!-- /container -->
 
