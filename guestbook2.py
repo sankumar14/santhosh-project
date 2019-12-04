@@ -10,7 +10,7 @@ s3 = boto3.client(
 	)
 
 app = Flask(__name__)
-# Bootstrap(app)
+Bootstrap(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:admin1234@guestbook-1.ch4uderhegxd.us-east-1.rds.amazonaws.com/commentdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.from_object("config")
