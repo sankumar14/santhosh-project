@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <title>Welcome </title>
+    <title>About</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
@@ -23,14 +23,9 @@
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
 
-    <!-- <Custom jQuery scripts> -->
-
-    
-
-  </head>
-
-  <body>
-    <div class="container" role="navigation">
+    <head>
+    	<body>
+            <div class="container" role="navigation">
 
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <ul class="navbar-nav">
@@ -51,37 +46,19 @@
 </nav>
 
   </div>
+  
+    		<div class="container" role="main">
+    			<div class="jumbotron">
+    				<img src="https://cutt.ly/YePLM7o" class="img-rounded" alt="Cinque Terre"> 
+        			<p class="text-center"><h1> The River Falls Books</h1></p><br> <br>
+        			<h4> The River Falls Books is first of its kind log book available electronically and helps small businesses to gather feedbacks from the customers and implement any fixes nessesary in order to maintain customer satisfaction. This place is also good to cheerish memories and share contacts or store them in secure location. <br> <br>
 
-  <div class="container" role="main">
+        			<em> About the city River Falls, WI, USA: </em> <br> <br>
 
-      <div class="jumbotron">
-        <img src="https://cutt.ly/YePLM7o" class="img-rounded" alt="Cinque Terre"> 
-        <p class="text-center"><h1> The River Falls Books</h1></p><br>
-        <h4> The River Falls Books is first of its kind log book available electronically and helps small businesses to gather feedbacks from the customers and implement any fixes nessesary in order to maintain customer satisfaction. This place is also good to cheerish memories.<br> <br>
-        <a type="button" class="btn btn-link" href="{{ url_for('sign') }}"> <button type="button" class="btn btn-primary">Sign the Book</button></a>
-        </h4>
-
-        {% for r in result %}
-        <div class="page-header">
-          <h2>{{ r.name }}</h2>
-        </div>
-
-        <div class=" well well-sm">
-          <h4>{{ r.comment }}</h4>
-        </div>
-
-        {% endfor %}
-
-        <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
-      </ul>
-
-      </div>
-
-
-      
-
-      
-
-  </body>
+          			The city's first settlers were Joel Foster and his indentured servant, Dick, in 1848. The village was started as Kinnickinnic in 1854 by brothers Nathaniel N. and Oliver S. Powell, who were from St. Lawrence County, New York. At the time, the town and village were also known as Greenwood, but this was changed, as another Greenwood, Wisconsin already existed. The present name comes from the Kinnickinnic River rapids. </h4>
+    				
+    			</div>
+    			
+    		</div>
+    	</body>
+    </head>

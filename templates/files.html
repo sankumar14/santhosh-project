@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Welcome </title>
+
+    
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"> 
+    <!-- Bootstrap theme -->
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+    
+    <!-- {% block navbar %}
+    <div class="navbar">
+      <ul class="nav navbar-nav"> 
+        <li><a href="{{ url_for('files') }}">"Gallery"</li>
+
+      </ul>
+
+
+    </div>
+    {% endblock %} -->
+    
+
+  </head>
+
+
+<body>
+<div class="container" role="navigation">
+
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="{{url_for('index')}}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('files')}}">Gallery</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('about')}}">About</a>
+    </li>    
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
+  </div>
+
+
+  <div  class="container" role="main">
+  <div class="row">
+    <div class="col-12-xs">
+      <h3>Gallery</h3>
+      <p> Created: {{ my_bucket.creation_date | datetimeformat }} </p>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <p class="bg-info" style="padding: 10px;">
+            {% for message in messages %}
+              {{ message }}<br>
+            {% endfor %}
+            
+          </p>
+            
+        {% endif %}
+      {% endwith %}
+      <hr>
+
+      <!-- <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+          <label for="file">Upload Photos</label>
+        
+        <input type="file" name="file">
+        <br></br>
+        <button class="btn btn-lg btn-sm " type="submit">Sign</button></div> 
+        
+    </form> -->
+
+      <br>
+
+      <table class="table table-striped" border="2">
+        <tr>
+          <th>File Name</th>
+          <th>Uploaded</th>
+          <th>File Type</th>
+          <th></th>
+        </tr>
+        {% for f in files %}
+        <tr>
+          <td>{{ f.key}} </td>
+          <td>{{ f.last_modified | datetimeformat }} </td>
+          <td> {{ f.key | file_type }} </td>
+          <td>
+            <!-- <form class="delete-form" action="{{ url_for('delete')}}" method="POST">
+              <input type="hidden" name="key" value="{{ f.key }}">
+              <button type="submit" class="btn btn-danger btn btn-sm">Delete</button>
+              <i class="fa fa-trash-alt"></i>
+            </form>
+            <br> -->
+            <form class="download-form" action="{{ url_for('download')}}" method="POST">
+              <input type="hidden" name="key" value="{{ f.key }}">
+              <button type="submit" class="btn btn-default btn btn-sm">Download</button>
+              <i class="fa fa-download"></i>
+            </form>
+          </td>
+        </tr>
+
+
+        {% endfor %}
+      </table>
+
+    </div>
+
+   </div>
+  </div>
+</body>

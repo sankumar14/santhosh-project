@@ -4,37 +4,72 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <title>Sign the Book</title>
-
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/sign.css') }}" rel="stylesheet">
-  </head>
+    <!-- < Custom style for buttons> -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	
+   </head>
 
-  <body>
+   <body>
 
-    <div class="container">
+   <div class="container" role="navigation">
 
-      <form class="form-signin" method="post" action="/process">
-        <h2 class="form-signin-heading">Sign the Book</h2>
-        <div class="form-group">
-          <label for="inputName" class="sr-only">Name</label>
-          <input type="text" id="inputName" name="name" class="form-control" placeholder="Name" required autofocus>
-        </div>
-        <div class="form-group">
-          <label for="comment" class="sr-only">Comment:</label>
-            <textarea class="form-control" name="comment" rows="5" id="comment" placeholder=" Share your experience" required></textarea>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign</button>
-      </form>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="{{url_for('index')}}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('files')}}">Gallery</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('about')}}">About</a>
+    </li>    
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
 
-    </div> <!-- /container -->
+  </div>
 
-  </body>
-</html>
+   	<div class="container">
+   		<form class="form-signin" method="POST" action="/process" enctype="multipart/form-data">
+   			
+   			<h2 class="form-signin-heading">Sign the Book</h2>
+   			
+   			<div class="form-group" >
+   				<label for="inputName" class="sr-only">Your Name</label>
+          		<input type="text" name="name" id="inputName" class="form-control" placeholder="Your Name" required autofocus>
+   			</div>
+   			
+   			<div class="form-group">
+   				<label for="comment" class="sr-only">Your Comment</label>
+   				<textarea class="form-control" name="comment" rows="5" id="comment" placeholder="Your Comment" required></textarea>   				
+   			</div>
+   			
+   			<div class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+   				<label for="file">Upload your Memories</label>
+   				<input type="file" name="file" accept="image/*" multiple>
+   				<br>
+          		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign</button>
+   				
+   			</div>
+   		</form>   			
+   		
+   	</div>
+    	
+   </body>
